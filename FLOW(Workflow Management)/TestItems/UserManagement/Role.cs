@@ -2,6 +2,7 @@
 using FLOW_Workflow_Management_.Locators.UserManagement;
 using FLOW_Workflow_Management_.Utilities;
 using Microsoft.VisualStudio.TestPlatform.CrossPlatEngine.Client;
+using MongoDB.Bson.Serialization.Serializers;
 using NUnit.Framework.Constraints;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -18,7 +19,7 @@ namespace FLOW_Workflow_Management_.TestItems.UserManagement
     {
         
         [Test]
-        [TestCase("dpppasamonte@federalland.ph", "Admin123", "Automation Testing","Active", "/home/index")]
+        [TestCase("dpppasamonte@federalland.ph", "Admin123!", "Automation Testing","Active", "/home/index")]
         public void CreateROLE(String email, String pwd, String rolename, String published, String indexval)
         {
             Login(email, pwd);
@@ -43,17 +44,25 @@ namespace FLOW_Workflow_Management_.TestItems.UserManagement
 
 
 
-
+        [Test]
+        [TestCase("dpppasamonte@federalland.ph", "Admin123!", "AUTOMATION TESTING EDITED", "Active", "/home/index", "AUTOMATION TESTING 2nd EDITED", "","")]
         public void EditROLE(String email, String pwd, String rolename, String published, String indexval, String NEWrolename, String NEWpublished, String NEWindexval)
         {
             Login(email, pwd);
+            DashboardPage dashboard = new DashboardPage(driver.Value);
+
+            dashboard.gotoUSERMANAGEMENT().Click();
+            dashboard.gotoROLE().Click();
+            Thread.Sleep(1000);
+
             RolePage role = new RolePage(driver.Value);
             role.gotoSearch().SendKeys(rolename);
             role.goto1stEdit().Click();
 
             if(NEWrolename != "")
             {
-                role.gotoRoleTxtbx().SendKeys(rolename);
+                role.gotoRoleTxtbx().Clear();
+                role.gotoRoleTxtbx().SendKeys(NEWrolename);
             }
 
             if(NEWpublished != "")
@@ -71,6 +80,24 @@ namespace FLOW_Workflow_Management_.TestItems.UserManagement
 
         }
 
+        //FOR FIX
+        [Test]
+        [TestCase("dpppasamonte@federalland.ph", "Admin123!", "AUTOMATION TESTING 2nd EDITED")]
+
+        public void DeleteRole(String email, String pwd, String rolename )
+        {
+            Login(email, pwd);
+            DashboardPage dashboard = new DashboardPage(driver.Value);
+
+            dashboard.gotoUSERMANAGEMENT().Click();
+            dashboard.gotoROLE().Click();
+
+            RolePage role = new RolePage(driver.Value);
+            role.gotoSearch().SendKeys(rolename);
+
+            role.goto1stDelete().Click();
+
+        }
 
 
 
