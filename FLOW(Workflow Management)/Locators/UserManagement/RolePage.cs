@@ -72,7 +72,7 @@ namespace FLOW_Workflow_Management_.Locators.UserManagement
             return firstedit;
         }
 
-        [FindsBy(How = How.CssSelector, Using = "tbody tr:nth-child(1) td:nth-child(6) div:nth-child(1) a:nth-child(2) i:nth-child(1)")]
+        [FindsBy(How = How.CssSelector, Using = "a[title='Delete'] i[class='fal fa-times']")]
         private IWebElement firstdelete;
         public IWebElement goto1stDelete()
         {

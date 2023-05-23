@@ -97,6 +97,8 @@ namespace FLOW_Workflow_Management_.TestItems.UserManagement
 
             role.goto1stDelete().Click();
 
+            confirmDelete();
+
         }
 
 

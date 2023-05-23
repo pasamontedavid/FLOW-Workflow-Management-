@@ -117,5 +117,11 @@ namespace FLOW_Workflow_Management_.Utilities
         }
 
 
+
+        public void confirmDelete()
+        {
+            driver.Value.FindElement(By.CssSelector("button[class='swal2-confirm swal2-styled swal2-default-outline']")).Click();
+        }
+
     }
 }
