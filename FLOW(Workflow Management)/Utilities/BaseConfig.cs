@@ -14,6 +14,9 @@ using AventStack.ExtentReports.Reporter;
 using AventStack.ExtentReports;
 using NUnit.Framework.Interfaces;
 using Microsoft.Extensions.Options;
+using FLOW_Workflow_Management_.Locators.Login;
+using FLOW_Workflow_Management_.Locators.Dashboard;
+using FLOW_Workflow_Management_.Locators.Notifications;
 
 namespace FLOW_Workflow_Management_.Utilities
 {
@@ -104,15 +107,19 @@ namespace FLOW_Workflow_Management_.Utilities
 
         public void Login(String email,String pwd)
         {
-            this.driver.Value.FindElement(By.CssSelector("input[placeholder='Email']")).SendKeys(email);
-            this.driver.Value.FindElement(By.CssSelector("input[placeholder='Password']")).SendKeys(pwd);
-            this.driver.Value.FindElement(By.Id("js-login-btn")).Click();
+            LoginPage login = new LoginPage(driver.Value);
+
+            login.gotoLoginID().SendKeys(email);
+            login.gotoPassword().SendKeys(pwd);
+            login.gotoSubmit().Click();
         }
         
         public void Logout()
         {
-            driver.Value.FindElement(By.CssSelector("a[title='userInfo.email'] img[alt='User profile picture']")).Click();
-            driver.Value.FindElement(By.CssSelector("span[data-i18n='drpdwn.page-logout']")).Click();
+
+            DashboardPage dashboard = new DashboardPage(driver.Value);
+            dashboard.gotoUserIcon().Click();
+            dashboard.gotoLogoutBtn().Click();
 
         }
 
@@ -120,12 +127,16 @@ namespace FLOW_Workflow_Management_.Utilities
 
         public void confirmDelete()
         {
-            driver.Value.FindElement(By.CssSelector("button[class='swal2-confirm swal2-styled swal2-default-outline']")).Click();
+            Notifications notifications = new Notifications(driver.Value);
+
+
+            notifications.gotoConfirmDelete().Click();
         }
 
         public void canceldelete()
         {
-            driver.Value.FindElement(By.CssSelector("button[class='swal2-cancel swal2-styled swal2-default-outline']")).Click();
+            Notifications notifications = new Notifications(driver.Value);
+            notifications.gotoCancelDelete().Click();
         }
 
     }

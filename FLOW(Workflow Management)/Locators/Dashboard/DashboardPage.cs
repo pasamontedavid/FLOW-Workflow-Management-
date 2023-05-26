@@ -18,17 +18,38 @@ namespace FLOW_Workflow_Management_.Locators.Dashboard
             PageFactory.InitElements(driver, this);
         }
 
+        // Start Logout
+        [FindsBy(How = How.CssSelector, Using = "a[title='userInfo.email'] img[alt='User profile picture']")]
+        private IWebElement UserIcon;
+        public IWebElement gotoUserIcon()
+        {
+            return UserIcon;
+        }
+
+        [FindsBy(How = How.CssSelector, Using = "span[data-i18n='drpdwn.page-logout']")]
+        private IWebElement LogoutBtn;
+        public IWebElement gotoLogoutBtn()
+        {
+            return LogoutBtn;
+        }
+
+        //END Logout
+
+
+        //START USERMANAGEMENT MODULE
+
         [FindsBy(How =How.CssSelector, Using = "body > app-root:nth-child(3) > app-home:nth-child(3) > div:nth-child(1) > div:nth-child(1) > aside:nth-child(1) > ul:nth-child(3) > li:nth-child(3) > a:nth-child(1)")]
         private IWebElement USERMANGEMENT;
 
+       
 
-        // START USERMANAGEMENT
+        
         public IWebElement gotoUSERMANAGEMENT()
         {
             return USERMANGEMENT;
         }
-
-
+        //END USERMANAGEMENT MODULE
+        // START USERMANAGEMENT Sub Module
         [FindsBy(How = How.CssSelector, Using = "a[title='/home/role']")]
         private IWebElement ROLE;
         public IWebElement gotoROLE()
@@ -67,7 +88,7 @@ namespace FLOW_Workflow_Management_.Locators.Dashboard
         }
 
 
-        //END USERMANAGEMENT
+        //END USERMANAGEMENT Sub Module
 
     }
 }

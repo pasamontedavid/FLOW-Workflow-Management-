@@ -47,13 +47,7 @@ namespace FLOW_Workflow_Management_.Locators.Login
         }
 
 
-        //Verify Successful Login
-        [FindsBy(How = How.CssSelector, Using = "div .info-card .info-card-text span:nth-child(2)")]
-        private IWebElement VerifyLogin;
-        public IWebElement gotoVerify()
-        {
-            return VerifyLogin;
-        }
+      
 
     }
 }
