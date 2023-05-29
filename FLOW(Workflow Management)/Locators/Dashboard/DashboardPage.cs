@@ -36,6 +36,53 @@ namespace FLOW_Workflow_Management_.Locators.Dashboard
         //END Logout
 
 
+        //START ADMINISTRATOR MODULE
+        [FindsBy(How = How.CssSelector, Using = "body > app-root:nth-child(3) > app-home:nth-child(3) > div:nth-child(1) > div:nth-child(1) > aside:nth-child(1) > ul:nth-child(3) > li:nth-child(2) > a:nth-child(1) > span:nth-child(2)")]
+        private IWebElement Administrator;
+
+        public IWebElement gotoAdministrator()
+        {
+            return Administrator;
+        }
+
+
+        //END ADMINISTRATOR MODULE
+
+        //START ADMINISTRATOR SUB MODULE
+
+        [FindsBy(How = How.CssSelector, Using = "a[title='/home/holiday-calendar']")]
+        private IWebElement HolidayCalendar;
+        public IWebElement gotoHolidayCalendar()
+        {
+            return HolidayCalendar;
+        }
+
+
+        [FindsBy(How = How.CssSelector, Using = "a[title='/home/reason']")]
+        private IWebElement Reason;
+        public IWebElement gotoReason()
+        {
+            return Reason;
+        }
+
+        [FindsBy(How = How.CssSelector, Using = "body > app-root:nth-child(3) > app-home:nth-child(3) > div:nth-child(1) > div:nth-child(1) > aside:nth-child(1) > ul:nth-child(3) > li:nth-child(2) > ul:nth-child(2) > li:nth-child(3) > a:nth-child(1) > span:nth-child(1)")]
+        private IWebElement Workflow;
+        public IWebElement gotoWorkflow()
+        {
+            return Workflow;
+        }
+
+        //END ADMINISTRATOR SUB MODULE
+
+
+
+
+
+
+
+
+
+
         //START USERMANAGEMENT MODULE
 
         [FindsBy(How =How.CssSelector, Using = "body > app-root:nth-child(3) > app-home:nth-child(3) > div:nth-child(1) > div:nth-child(1) > aside:nth-child(1) > ul:nth-child(3) > li:nth-child(3) > a:nth-child(1)")]
@@ -90,5 +137,40 @@ namespace FLOW_Workflow_Management_.Locators.Dashboard
 
         //END USERMANAGEMENT Sub Module
 
+
+        //START SYSTEMSETTINGS MODULE
+        [FindsBy(How = How.CssSelector, Using = "body > app-root:nth-child(3) > app-home:nth-child(3) > div:nth-child(1) > div:nth-child(1) > aside:nth-child(1) > ul:nth-child(3) > li:nth-child(4) > a:nth-child(1) > span:nth-child(2)")]
+        private IWebElement SystemSettings;
+        public IWebElement gotoSystemSettings()
+        {
+            return SystemSettings;
+        }
+
+        //END SYSTEMSETTINGS MODULE
+
+        //START SYSTEMSETTINGS SUB MODULE
+        [FindsBy(How = How.CssSelector, Using = "body > app-root:nth-child(3) > app-home:nth-child(3) > div:nth-child(1) > div:nth-child(1) > aside:nth-child(1) > ul:nth-child(3) > li:nth-child(4) > ul:nth-child(2) > li:nth-child(1) > a:nth-child(1) > span:nth-child(1)")]
+        private IWebElement Menu;
+        public IWebElement gotoMenu()
+        {
+            return Menu;
+        }
+
+        [FindsBy(How = How.CssSelector, Using = "body > app-root:nth-child(3) > app-home:nth-child(3) > div:nth-child(1) > div:nth-child(1) > aside:nth-child(1) > ul:nth-child(3) > li:nth-child(4) > ul:nth-child(2) > li:nth-child(2) > a:nth-child(1) > span:nth-child(1)")]
+        private IWebElement GlobalConfig;
+        public IWebElement gotoGlobalConfig()
+        {
+            return GlobalConfig;
+        }
+
+
+        [FindsBy(How = How.CssSelector, Using = "body > app-root:nth-child(3) > app-home:nth-child(3) > div:nth-child(1) > div:nth-child(1) > aside:nth-child(1) > ul:nth-child(3) > li:nth-child(4) > ul:nth-child(2) > li:nth-child(3) > a:nth-child(1) > span:nth-child(1)")]
+        private IWebElement Logs;
+        public IWebElement gotoLogs()
+        {
+            return Logs;
+        }
+
+        //END SYSTEMSETTINGS SUB MODULE
     }
 }

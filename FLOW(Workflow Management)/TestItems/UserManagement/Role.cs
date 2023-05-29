@@ -45,7 +45,7 @@ namespace FLOW_Workflow_Management_.TestItems.UserManagement
 
 
         [Test]
-        [TestCase("dpppasamonte@federalland.ph", "Admin123!", "AUTOMATION TESTING EDITED", "Active", "/home/index", "AUTOMATION TESTING 2nd EDITED", "","")]
+        [TestCase("dpppasamonte@federalland.ph", "Admin123!", "AUTOMATION TESTING", "Active", "/home/index", "AUTOMATION TESTING 2nd EDITED", "","")]
         public void EditROLE(String email, String pwd, String rolename, String published, String indexval, String NEWrolename, String NEWpublished, String NEWindexval)
         {
             Login(email, pwd);
