@@ -20,12 +20,7 @@ namespace FLOW_Workflow_Management_.Locators.UserManagement
         }
 
 
-        [FindsBy(How = How.CssSelector, Using = ".btn.btn-primary.float-right")]
-        private IWebElement Create;
-        public IWebElement gotoCreate()
-        {
-            return Create;
-        }
+       
 
         [FindsBy(How = How.CssSelector, Using = "input[placeholder='Role Name']")]
         private IWebElement RoleTxtbx;

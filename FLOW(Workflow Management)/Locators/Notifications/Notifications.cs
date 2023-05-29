@@ -76,5 +76,15 @@ namespace FLOW_Workflow_Management_.Locators.Notifications
 
         //END Delete MODAL 
 
+
+
+
+        [FindsBy(How = How.CssSelector, Using = ".btn.btn-primary.float-right")]
+        private IWebElement Create;
+        public IWebElement gotoCreate()
+        {
+            return Create;
+        }
+
     }
 }

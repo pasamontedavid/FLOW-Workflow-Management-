@@ -1,4 +1,5 @@
 ﻿using FLOW_Workflow_Management_.Locators.Dashboard;
+using FLOW_Workflow_Management_.Locators.Notifications;
 using FLOW_Workflow_Management_.Locators.UserManagement;
 using FLOW_Workflow_Management_.Utilities;
 using Microsoft.VisualStudio.TestPlatform.CrossPlatEngine.Client;
@@ -24,13 +25,13 @@ namespace FLOW_Workflow_Management_.TestItems.UserManagement
         {
             Login(email, pwd);
             DashboardPage dashboard = new DashboardPage(driver.Value);
-
+            Notifications notifications = new Notifications(driver.Value);
             dashboard.gotoUSERMANAGEMENT().Click();
             dashboard.gotoROLE().Click();
 
             RolePage role= new RolePage(driver.Value);
 
-            role.gotoCreate().Click();
+            notifications.gotoCreate().Click();
             role.gotoRoleTxtbx().SendKeys(rolename);
 
             //INDEX DROPOWN
