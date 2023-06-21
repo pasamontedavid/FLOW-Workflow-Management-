@@ -139,5 +139,38 @@ namespace FLOW_Workflow_Management_.Utilities
             notifications.gotoCancelDelete().Click();
         }
 
+
+        public void SuccessfulSave(String MenuName)
+        {
+            Notifications notifications = new Notifications(driver.Value);
+            string actualmsg = notifications.gotoNotifMsg().Text;
+            string actualtitle = notifications.gotoNotifTitle().Text;
+            StringAssert.Contains("Success", actualtitle);
+            StringAssert.Contains(MenuName + " was successfully saved!", actualmsg);
+
+        }
+
+        public void DubplicateSaveError(String Name)
+        {
+            Notifications notifications = new Notifications(driver.Value);
+            string actualmsg = notifications.gotoNotifMsg().Text;
+            string actualtitle = notifications.gotoNotifTitle().Text;
+            StringAssert.Contains("Error", actualtitle);
+            StringAssert.Contains("* Role: " + Name + " is already exists.", actualmsg);
+            notifications.GotoCloseModal().Click();
+
+        }
+
+        public void RequiredFieldunfullfillSave()
+        {
+            Notifications notifications = new Notifications(driver.Value);
+            string actualmsg = notifications.gotoNotifMsg().Text;
+            string actualtitle = notifications.gotoNotifTitle().Text;
+            StringAssert.Contains("Warning", actualtitle);
+            StringAssert.Contains("Required field is not filled", actualmsg);
+            Thread.Sleep(1000);
+            notifications.GotoCloseModal().Click();
+
+        }
     }
 }

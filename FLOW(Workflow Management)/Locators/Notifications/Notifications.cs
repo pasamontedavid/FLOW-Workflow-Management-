@@ -86,5 +86,12 @@ namespace FLOW_Workflow_Management_.Locators.Notifications
             return Create;
         }
 
+        //CloseModal
+        [FindsBy(How = How.CssSelector, Using = ".btn.btn-secondary")]
+        private IWebElement CloseModal;
+        public IWebElement GotoCloseModal()
+        {
+            return CloseModal;
+        }
     }
 }

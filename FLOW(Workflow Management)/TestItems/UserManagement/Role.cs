@@ -20,7 +20,7 @@ namespace FLOW_Workflow_Management_.TestItems.UserManagement
     {
         
         [Test]
-        [TestCase("dpppasamonte@federalland.ph", "Admin123!", "Automation Testing","Active", "/home/index")]
+        [TestCase("dpppasamonte@federalland.ph", "Admin123!", "Automation Testing3","Active", "/home/index")]
         public void CreateROLE(String email, String pwd, String rolename, String published, String indexval)
         {
             Login(email, pwd);
@@ -41,9 +41,53 @@ namespace FLOW_Workflow_Management_.TestItems.UserManagement
             SelectPublished(published);
 
             role.gotoSave().Click();
+            SuccessfulSave("Role");
         }
 
+        [Test]
+        [TestCase("dpppasamonte@federalland.ph", "Admin123!", "Automation Testing2", "Active", "/home/index")]
+        public void CreateDuplicateROLE(String email, String pwd, String rolename, String published, String indexval)
+        {
+            Login(email, pwd);
+            DashboardPage dashboard = new DashboardPage(driver.Value);
+            Notifications notifications = new Notifications(driver.Value);
+            dashboard.gotoUSERMANAGEMENT().Click();
+            dashboard.gotoROLE().Click();
 
+            RolePage role = new RolePage(driver.Value);
+
+            notifications.gotoCreate().Click();
+            role.gotoRoleTxtbx().SendKeys(rolename);
+
+            //INDEX DROPOWN
+            SelectIndex(indexval);
+
+            //PUBLISHED DROPDOWN
+            SelectPublished(published);
+
+            role.gotoSave().Click();
+            DubplicateSaveError(rolename);
+        }
+        [Test]
+        [TestCase("dpppasamonte@federalland.ph", "Admin123!")]
+        public void CreateROLEUnfullfilledfields(String email, String pwd)
+        {
+            Login(email, pwd);
+            DashboardPage dashboard = new DashboardPage(driver.Value);
+            Notifications notifications = new Notifications(driver.Value);
+            dashboard.gotoUSERMANAGEMENT().Click();
+            dashboard.gotoROLE().Click();
+
+            RolePage role = new RolePage(driver.Value);
+
+            notifications.gotoCreate().Click();
+          
+
+            role.gotoSave().Click();
+            RequiredFieldunfullfillSave();
+            
+
+        }
 
         [Test]
         [TestCase("dpppasamonte@federalland.ph", "Admin123!", "AUTOMATION TESTING", "Active", "/home/index", "AUTOMATION TESTING 2nd EDITED", "","")]
@@ -83,7 +127,7 @@ namespace FLOW_Workflow_Management_.TestItems.UserManagement
 
         //FOR FIX
         [Test]
-        [TestCase("dpppasamonte@federalland.ph", "Admin123!", "AUTOMATION TESTING 2nd EDITED")]
+        [TestCase("dpppasamonte@federalland.ph", "Admin123!", "Automation Testing")]
 
         public void DeleteRole(String email, String pwd, String rolename )
         {
@@ -99,7 +143,8 @@ namespace FLOW_Workflow_Management_.TestItems.UserManagement
             role.goto1stDelete().Click();
 
             confirmDelete();
-
+            //Notifications notification = new Notifications(driver.Value);
+            //TestContext.WriteLine(notification.gotoNotifMsg().Text);      NO POP-UP Message
         }
 
 
